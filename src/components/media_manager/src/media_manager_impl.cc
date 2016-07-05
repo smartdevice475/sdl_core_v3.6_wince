@@ -55,6 +55,9 @@
 #ifdef SP_C9_PRIMA1
 #include "media_manager/video/sharedmem_video_streamer_adapter.h"
 #endif
+#ifdef BUILD_TARGET_LIB
+#include "media_manager/video/callback_video_streamer_adapter.h"
+#endif
 #ifdef MODIFY_FUNCTION_SIGN
 #include <iomanip>
 #endif
@@ -133,6 +136,8 @@ void MediaManagerImpl::Init() {
 		video_streamer_ = new VideoStreamToFileAdapter(
 			profile::Profile::instance()->video_stream_file());
 #endif
+	} else if ("callback" == profile::Profile::instance()->video_server_type()) {
+		video_streamer_ = new CallbackVideoStreamerAdapter();
 	}
 
   audio_streamer_ = new VideoStreamToFileAdapter(
@@ -146,6 +151,8 @@ void MediaManagerImpl::Init() {
 	} else if ("file" == profile::Profile::instance()->video_server_type()) {
 		video_streamer_ = new VideoStreamToFileAdapter(
 			profile::Profile::instance()->video_stream_file());
+	} else if ("callback" == profile::Profile::instance()->video_server_type()) {
+		video_streamer_ = new CallbackVideoStreamerAdapter();
 	}
 
   audio_streamer_ = new VideoStreamToFileAdapter(
@@ -158,7 +165,9 @@ void MediaManagerImpl::Init() {
   } else if ("file" == profile::Profile::instance()->video_server_type()) {
     video_streamer_ = new VideoStreamToFileAdapter(
         profile::Profile::instance()->video_stream_file());
-  }
+  } else if ("callback" == profile::Profile::instance()->video_server_type()) {
+		video_streamer_ = new CallbackVideoStreamerAdapter();
+	}
 
   if ("socket" == profile::Profile::instance()->audio_server_type()) {
     audio_streamer_ = new SocketAudioStreamerAdapter();
@@ -167,7 +176,10 @@ void MediaManagerImpl::Init() {
   } else if ("file" == profile::Profile::instance()->audio_server_type()) {
     audio_streamer_ = new VideoStreamToFileAdapter(
         profile::Profile::instance()->audio_stream_file());
-  }
+  } else if ("callback" == profile::Profile::instance()->video_server_type()) {
+		audio_streamer_ = new VideoStreamToFileAdapter(
+        profile::Profile::instance()->audio_stream_file());
+	}
 #endif
 
   video_streamer_listener_ = new StreamerListener();

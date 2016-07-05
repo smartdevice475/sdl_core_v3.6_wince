@@ -36,6 +36,8 @@ set(default_sources
 
   ./src/video/socket_video_streamer_adapter.cc
   ./src/socket_streamer_adapter.cc
+  ./src/video/callback_video_streamer_adapter.cc
+  ./src/callback_streamer_adapter.cc
 )
 elseif(CMAKE_SYSTEM_NAME STREQUAL "WindowsCE")
 set(default_sources
@@ -45,6 +47,8 @@ set(default_sources
   ./src/socket_streamer_adapter.cc
   ./src/video/sharedmem_video_streamer_adapter.cc
   ./src/sharedmem_streamer_adapter.cc
+  ./src/video/callback_video_streamer_adapter.cc
+  ./src/callback_streamer_adapter.cc
 )
 else()
 set(default_sources
@@ -57,6 +61,8 @@ set(default_sources
   ./src/video/video_stream_to_file_adapter.cc
   ./src/pipe_streamer_adapter.cc
   ./src/socket_streamer_adapter.cc
+  ./src/video/callback_video_streamer_adapter.cc
+  ./src/callback_streamer_adapter.cc
 )
 endif()
 set(LIBRARIES

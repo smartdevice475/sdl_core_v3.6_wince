@@ -915,6 +915,8 @@ RESULT_CODE ProtocolHandlerImpl::HandleControlMessageStartSession(
       ServiceTypeFromByte(packet.service_type()));
 
   if (-1 != session_id) {
+		// Add by panliang 2016/7/5
+		usleep(1500000);
     SendStartSessionAck(
         connection_id, session_id, packet.protocol_version(),
         session_observer_->KeyFromPair(connection_id, session_id),
