@@ -236,8 +236,6 @@ NsSmartDeviceLink::NsJSONHandler::strings::kMessage = "message";
   }
 #endif  // __QNX__
 	
-  main_namespace::LifeCycle::instance()->StartComponents();
-
   // --------------------------------------------------------------------------
   // Third-Party components initialization.
 
@@ -247,6 +245,10 @@ NsSmartDeviceLink::NsJSONHandler::strings::kMessage = "message";
     exit(EXIT_FAILURE);
   }
   LOG4CXX_INFO(logger, "InitMessageBroker successful");
+
+  main_namespace::LifeCycle::instance()->StartComponents();
+
+  LOG4CXX_INFO(logger, "StartComponents successful");
 
   if (profile::Profile::instance()->launch_hmi()) {
     if (profile::Profile::instance()->server_address() == kLocalHostAddress) {
