@@ -44,6 +44,8 @@
 #include <sstream>
 #elif defined(OS_WIN32)
 #include <sstream>
+#elif defined(OS_LINUX)
+#include <sstream>
 #endif
 
 namespace application_manager {

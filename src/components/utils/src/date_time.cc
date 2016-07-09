@@ -48,6 +48,9 @@
 #ifdef MODIFY_FUNCTION_SIGN
 #include "utils/macro.h"
 #endif
+#ifdef OS_LINUX
+#include <string.h>
+#endif
 #ifdef OS_WIN32
 void clock_gettime(int i, timespec * tm)
 {

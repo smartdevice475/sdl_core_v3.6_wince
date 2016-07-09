@@ -181,6 +181,7 @@ endif()
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
   add_definitions(-DOS_LINUX)
+  set(ENABLE_LOG OFF)
 elseif(CMAKE_SYSTEM_NAME STREQUAL "QNX")
   add_definitions(-DOS_QNX)
   set(BUILD_BT_SUPPORT OFF)
