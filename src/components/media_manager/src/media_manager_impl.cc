@@ -55,9 +55,9 @@
 #ifdef SP_C9_PRIMA1
 #include "media_manager/video/sharedmem_video_streamer_adapter.h"
 #endif
-#ifdef BUILD_TARGET_LIB
+//#ifdef BUILD_TARGET_LIB
 #include "media_manager/video/callback_video_streamer_adapter.h"
-#endif
+//#endif
 #ifdef MODIFY_FUNCTION_SIGN
 #include <iomanip>
 #endif
