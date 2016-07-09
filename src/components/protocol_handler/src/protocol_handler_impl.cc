@@ -915,8 +915,10 @@ RESULT_CODE ProtocolHandlerImpl::HandleControlMessageStartSession(
       ServiceTypeFromByte(packet.service_type()));
 
   if (-1 != session_id) {
+#ifdef OS_ANDROID
 		// Add by panliang 2016/7/5
 		usleep(1500000);
+#endif
     SendStartSessionAck(
         connection_id, session_id, packet.protocol_version(),
         session_observer_->KeyFromPair(connection_id, session_id),
