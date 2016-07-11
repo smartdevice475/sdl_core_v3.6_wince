@@ -917,7 +917,7 @@ RESULT_CODE ProtocolHandlerImpl::HandleControlMessageStartSession(
   if (-1 != session_id) {
 #ifdef OS_ANDROID
 		// Add by panliang 2016/7/5
-		usleep(1500000);
+		usleep(3000000);
 #endif
     SendStartSessionAck(
         connection_id, session_id, packet.protocol_version(),

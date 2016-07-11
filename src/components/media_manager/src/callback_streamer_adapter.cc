@@ -41,7 +41,6 @@
 #ifdef MODIFY_FUNCTION_SIGN
 #ifdef ENABLE_LOG
 #include "utils/file_system.h"
-std::ofstream* pipe_file_stream_;
 #endif
 #endif
 
@@ -157,11 +156,6 @@ void CallbackStreamerAdapter::Streamer::threadMain() {
         continue;
       }
 
-#ifdef MODIFY_FUNCTION_SIGN
-#ifdef ENABLE_LOG
-			file_system::Write(pipe_file_stream_, msg.get()->data(), msg.get()->data_size());
-#endif
-#endif
 
 			ssize_t ret = 0;
 #ifdef BUILD_TARGET_LIB
