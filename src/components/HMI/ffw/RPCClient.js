@@ -42,7 +42,7 @@ FFW.RPCClient = Em.Object
         /*
          * url for message broker
          */
-        url: "ws://localhost:12346",
+        url: "ws://10.27.0.157:12346",
 //      url: FLAGS.WEBSOCKET_URL,
 
         /*
